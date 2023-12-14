@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CommonEntity/CommonEntity.iml" filepath="$PROJECT_DIR$/CommonEntity/CommonEntity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Long_Project.iml" filepath="$PROJECT_DIR$/.idea/Long_Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/usercenter/usercenter.iml" filepath="$PROJECT_DIR$/usercenter/usercenter.iml" />
+    </modules>
+  </component>
+</project>
