@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: usercenter
+  rabbitmq:
+    host: "192.168.111.100"
+    port: 5672
+    username: guest
+    password: guest
+
+  #    配置数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bigwork
+    username: root
+    password: 123456
+  # redis 配置
+  redis:
+    host: localhost
+    database: 0
+    port: 6379
+server:
+  port: 8084
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+# 邮箱验证的配置
+#  mail:
+#    default-encoding: UTF-8
+#    username: 2532578435@qq.com
+#    password:
+#人工智能的sdk所需的参数
+yuapi:
+  client:
+    access-key: 3007s580c4nuoh2bb64bnyb5wdc8cwo3
+    secret-key: a3mmdna7xk8a4qorkn99wa3n8zkpvbxz
+#    host: smtp.qq.com
+# RabbitMQ connection properties
