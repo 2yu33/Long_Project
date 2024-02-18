@@ -8,7 +8,7 @@
       <jdbc-url>jdbc:mysql://localhost:3306/lubuping</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="bigwork@localhost" uuid="b8fe12bb-d74f-4908-a87b-21a4ce3edfb8">
+    <data-source source="LOCAL" name="bigwork@localhost [2]" uuid="653d22ad-c37e-460c-988c-ffc5b1c29783">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

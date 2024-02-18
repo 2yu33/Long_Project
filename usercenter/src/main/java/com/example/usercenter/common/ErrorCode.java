@@ -4,7 +4,7 @@ package com.example.usercenter.common;
  * 错误码
  *
  * @author <a href="https://github.com/liyupi">程序员路不平</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
+
  */
 public enum ErrorCode {
 

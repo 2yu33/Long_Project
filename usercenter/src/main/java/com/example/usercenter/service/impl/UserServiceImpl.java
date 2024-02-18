@@ -4,6 +4,7 @@ package com.example.usercenter.service.impl;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.usercenter.common.ErrorCode;
 import com.example.usercenter.config.RedisTemplateConfig;
@@ -12,6 +13,7 @@ import com.example.usercenter.mapper.UserMapper;
 
 import com.example.usercenter.model.dto.LoginUser;
 import com.example.usercenter.model.dto.UserRegisterRequest;
+import com.example.usercenter.model.vo.UserVO;
 import com.example.usercenter.service.UserService;
 import com.example.usercenter.utils.JWTUtils;
 import com.example.usercenter.utils.RateLimiterUtil;
@@ -21,6 +23,7 @@ import org.model.User;
 import org.redisson.Redisson;
 import org.redisson.api.RMap;
 import org.redisson.api.RedissonClient;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.SimpleMailMessage;
@@ -36,13 +39,11 @@ import org.springframework.util.DigestUtils;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import static com.example.usercenter.contant.UserConstant.USER_LOGIN_STATE;
 
@@ -191,7 +192,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     public boolean isAdmin(HttpServletRequest request) {
         return false;
     }
+    @Override
+    public boolean isAdmin(User user) {
+//        return user != null && UserRoleEnum.ADMIN.getValue().equals(user.getUserRole());
+//        todo 记得改
 
+        return true;
+    }
     @Override
     public boolean userLogout() {
 //        删除redis中的值就行
@@ -274,6 +281,28 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             return false;
         }
 
+    }
+
+    @Override
+    public UserVO getUserVO(User user) {
+        if (user == null) {
+            return null;
+        }
+        UserVO userVO = new UserVO();
+        BeanUtils.copyProperties(user, userVO);
+        return userVO;
+    }
+
+    @Override
+    public List<UserVO> getUserVO(List<User> userList) {
+        if (CollectionUtils.isEmpty(userList)) {
+            return new ArrayList<>();
+        }
+
+        return userList.stream().map(user -> {UserVO userVO = new UserVO();
+            userVO.setId(user.getId());userVO.setUserAvatar(user.getUserAvatar());
+        userVO.setUserRole(user.getUserRole());userVO.setUserName(user.getUserName());
+        return userVO;}).collect(Collectors.toList());
     }
 }
 

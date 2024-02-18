@@ -2,10 +2,12 @@ package com.example.usercenter.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.usercenter.model.dto.UserRegisterRequest;
+import com.example.usercenter.model.vo.UserVO;
 import org.model.User;
 
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 
 public interface UserService extends IService<User> {
@@ -40,6 +42,8 @@ public interface UserService extends IService<User> {
      * @return
      */
     boolean isAdmin(HttpServletRequest request);
+
+    boolean isAdmin(User user);
 
     /**
      * 用户注销
@@ -76,5 +80,17 @@ public interface UserService extends IService<User> {
      * @return
      */
     boolean resettingPassword(String password1,String password2,String userAccount);
+
     boolean verifyEmail(String code);
+
+    /**
+     * 获取脱敏的用户信息
+     *
+     * @param user
+     * @return
+     */
+    UserVO getUserVO(User user);
+
+
+     List<UserVO> getUserVO(List<User> userList);
 }

@@ -40,7 +40,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * 图表接口
  * 懒得写Service了 凑合写在这
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
+.
  */
 @RestController
 @RequestMapping("/chart")
@@ -207,7 +207,7 @@ public class ChartController {
      * 编辑（用户）
      *
      * @param chartEditRequest
-     * @param request
+     * @param request`
      * @return
      */
     @PostMapping("/edit")
@@ -260,6 +260,7 @@ public class ChartController {
         // 校验文件
         long size = multipartFile.getSize();
         String originalFilename = multipartFile.getOriginalFilename();
+
         // 校验文件大小
         final long ONE_MB = 1024 * 1024L;
         if(size > ONE_MB)
